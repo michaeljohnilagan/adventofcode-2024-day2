@@ -2,7 +2,7 @@ import sys
 import numpy as np
 from typing import List
 
-def fun_format(filename : str) -> List[List[int]]:
+def format(filename : str) -> List[List[int]]:
     # open file
     with open(filename, 'r') as f:
         lines = f.readlines()
@@ -29,13 +29,13 @@ def classify(report : List[int]) -> str:
         return 'Safe'
     return 'Unsafe'
 
-def fun_safecount(puzzle : List[List[int]]) -> List[str]:
+def safecount(puzzle : List[List[int]]) -> List[str]:
     """Count safe reports in a puzzle"""
     classifications = [fun_classify(x) for x in puzzle]
     return sum([c=='Safe' for c in classifications])
 
 if __name__ == "__main__":
-    puzzle = fun_format(sys.argv[1])
+    puzzle = format(sys.argv[1])
     safecount = 0
     for report in puzzle:
         report_class = classify(report)
